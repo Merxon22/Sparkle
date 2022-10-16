@@ -10,10 +10,22 @@ class BackgroundManager:
         self.load_screen_background = pygame.transform.scale(self.load_screen_background, self.size)
         self.game_background = pygame.image.load("Images/Background.png")
         self.game_background = pygame.transform.scale(self.game_background, self.size)
-    
+        self.orange_background = pygame.image.load('Images/orange background.png')
+        self.orange_background = pygame.transform.scale(self.orange_background, self.size)
+
+        #daily reward
+        self.reward1 = pygame.image.load('Images/reward1.png')
+        self.reward2 = pygame.image.load('Images/reward2.png')
+        self.reward3 = pygame.image.load('Images/reward3.png')
+
     def render_background(self, screen, level):
         if level == 1:
             screen.blit(self.load_screen_background, [0,0])
+        elif level == 0:
+            screen.blit(self.orange_background, [0,0])
+            screen.blit(self.reward1, [60, 60])
+            screen.blit(self.reward2, [220, 60])
+            screen.blit(self.reward3, [90, 300])
         else:
             screen.blit(self.game_background, [0,0])
 

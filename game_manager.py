@@ -20,9 +20,9 @@ class GameManager():
         self.size = (400, 700)
         self.screen = pygame.display.set_mode(self.size)
 
-        self.current_level = 1
+        self.current_level = 0
         self.num_sparkles = 0
-        self.sparkle_rate = 10
+        self.sparkle_rate = 3
         self.last_sparkle_update_time = 0
     
 
@@ -36,11 +36,13 @@ class GameManager():
                 if event.type==pygame.QUIT:
                     sys.quit()
                 if event.type == pygame.MOUSEBUTTONDOWN and self.current_level == 1:
-                    self.current_level = 3
+                    self.current_level = 2
 
 
             self.background_manager.render_background(self.screen, self.current_level)
-            if self.current_level != 1:
+            if self.current_level == 0:
+                self.menu_manager.render_button(self.screen)
+            elif self.current_level > 1:
                 self.menu_manager.render_button(self.screen)
                 self.star_manager.render_star(self.screen, self.current_level, self)
                 self.ui_manager.render_ui(self.screen, self.current_level, self.num_sparkles, self.sparkle_rate)

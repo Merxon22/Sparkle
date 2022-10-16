@@ -22,13 +22,12 @@ class StarManager():
             star_image = self.star1
         elif level == 3:
             star_image = self.star2
-        original_scale = (star_image.get_width(), star_image.get_height())
 
         pos=pygame.mouse.get_pos()
         x_pos = 200 - star_image.get_width() / 2
         y_pos = 350 - star_image.get_height() / 2
         if self.check_cursor_distance_from_star(pos, (x_pos, y_pos), star_image.get_rect()) <= star_image.get_width() / 2:
-            star_image = pygame.transform.scale(star_image, original_scale * 1.05)
+            star_image = pygame.transform.scale(star_image, (star_image.get_width() * 1.05, star_image.get_height() * 1.05))
         else:
             pass
 
