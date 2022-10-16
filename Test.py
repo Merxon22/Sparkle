@@ -23,7 +23,7 @@ while running:
     diagram=pygame.transform.scale(diagram, (width*0.05*scale, height*0.05*scale))
     for event in pygame.event.get():
         if event.type==pygame.QUIT:
-            running=False
+            sys.quit
         if event.type==pygame.MOUSEBUTTONDOWN:
             x, y=event.pos
             if diagram.get_rect().collidepoint(x,y):

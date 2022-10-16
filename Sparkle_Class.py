@@ -1,5 +1,7 @@
-import pygame
+import pygame, sys
 from pygame.locals import *
+
+from Background import background
 
 class Sparkles:
     pygame.init()
@@ -39,11 +41,9 @@ class Display(Sparkles):
         
     
     def display_game(self):
-        #print(1)
         pygame.init()
-        
-        
-        FPS=20
+                
+        FPS=60
         fpsClock=pygame.time.Clock()
         screen=pygame.display.set_mode((400, 700))
         pygame.display.set_caption("SPARKLEs")
@@ -52,8 +52,13 @@ class Display(Sparkles):
         screen.blit(surface1[0], (10, 100))
         screen.blit(surface1[1], (10, 120))
         screen.blit(surface1[2], (10, 140))
-        pygame.display.flip()
-    def foundation(self, coins_possessed, click_values=1, level, star_color=(255, 255, 0), initializing_value=100):
+        while True:
+            for event in pygame.event.get():
+                if event.type==pygame.QUIT:
+                    sys.quit
+
+            pygame.display.flip()
+    def foundation(self, coins_possessed, click_values=1, level=1, star_color=(255, 255, 0), initializing_value=100):
         display_game()
         earth=pygame.image.load("stage1.png")
         earth_rect=earth.get_rect()
@@ -78,7 +83,7 @@ class Display(Sparkles):
             surface=font.render(str(score), True, (255, 0, 0))
             screen.blit(surface, (200, 100))
             pygame.display.flip()
-    def beginner(self, coins_possessed, click_values=2, level, star_color=(255, 0, 255), initializing_value=500):
+    def beginner(self, coins_possessed, click_values=2, level=1, star_color=(255, 0, 255), initializing_value=500):
         earth=pygame.image.load("Stage2.png")
         earth_rect=earth.get_rect()
         earth_pos = (150, 250)
@@ -88,7 +93,7 @@ class Display(Sparkles):
             earth_center = (earth_pos[0] + earth_rect.height/2, earth_pos[1] + earth_rect.width/2)
             return ((cursor_pos[0]-earth_center[0])**2 + (cursor_pos[1]-earth_center[1])**2)**0.5
         while running:
-            screen.fill((250, 250, 000))
+            background(level)
             screen.blit(earth, earth_pos)
             for event in pygame.event.get():
                 if event.type==pygame.QUIT:
@@ -102,7 +107,7 @@ class Display(Sparkles):
             surface=font.render(str(score), True, (255, 0, 0))
             screen.blit(surface, (200, 100))
             pygame.display.flip()
-    def amateur(self, coins_possessed, click_values=3, level, star_color=(0, 255, 255), initializing_value=3000):
+    def amateur(self, coins_possessed, click_values=3, level=1, star_color=(0, 255, 255), initializing_value=3000):
         earth=pygame.image.load("Earth.jpg")
         earth_rect=earth.get_rect()
         earth_pos = (150, 250)
@@ -126,7 +131,7 @@ class Display(Sparkles):
             surface=font.render(str(score), True, (255, 0, 0))
             screen.blit(surface, (200, 100))
             pygame.display.flip()
-    def expert(self, coins_possessed, click_values=4, level, star_color=(0, 0, 255), initializing_value=15000):
+    def expert(self, coins_possessed, click_values=4, level=1, star_color=(0, 0, 255), initializing_value=15000):
         earth=pygame.image.load("Earth.jpg")
         earth_rect=earth.get_rect()
         earth_pos = (150, 250)

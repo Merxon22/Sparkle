@@ -83,4 +83,6 @@ def background(level):
         #pygame.display.update()
         pygame.display.flip()
             #Clock.tick(clock_tick_rate)
-background(3)
+# background(1)
+
+    
