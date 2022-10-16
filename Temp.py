@@ -6,12 +6,14 @@ speed = [3, 3]
 screen=pygame.display.set_mode((400, 700))
 pygame.display.set_caption("SPARKLEs")
 running=True
+
 earth=pygame.image.load("Earth.jpg")
 earth_rect=earth.get_rect()
 earth_pos = (150, 250)
 earth_check_distance = 65
 
 score=0
+def main_menu()
 
 def check_cursor_distance_from_star(cursor_pos, earth_pos):
     earth_center = (earth_pos[0] + earth_rect.height/2, earth_pos[1] + earth_rect.width/2)
