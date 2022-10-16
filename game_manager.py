@@ -8,7 +8,7 @@ from star_manager import StarManager
 from store_manager import StoreManager
 pygame.init()
 from Background import BackgroundManager
-
+pygame.joystick.init()
 
 class GameManager():
     def __init__(self):
@@ -38,7 +38,9 @@ class GameManager():
         self.num_sparkles += num
 
     def run_game(self):
-        
+        joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+        print(len(joysticks))
+
         while True:
             self.check_sparkle_update()
 

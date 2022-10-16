@@ -11,6 +11,10 @@ class StarManager():
 
         self.number_list = []
         self.click_sound = pygame.mixer.Sound("Sound\Squee.mp3")
+        self.oof_sound = pygame.mixer.Sound('Sound/Oof.mp3')
+        self.error_sound = pygame.mixer.Sound('Sound/Error.mp3')
+        self.pop_sound = pygame.mixer.Sound('Sound/pop.mp3')
+        self.noice_sound = pygame.mixer.Sound('Sound/noice.mp3')
 
 
     def check_cursor_distance_from_star(self, cursor_pos, star_pos, star_rect):
@@ -37,11 +41,17 @@ class StarManager():
         screen.blit(star_image, (x_pos, y_pos))
 
         for event in pygame.event.get():
-            if event.type==pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.JOYBUTTONDOWN or event.type == pygame.MOUSEBUTTONDOWN:
                 pos=pygame.mouse.get_pos()
                 if self.check_cursor_distance_from_star(pos, (x_pos, y_pos), star_image.get_rect()) <= star_image.get_width() / 2:
                     game_manager.add_sparkle(1 * sparkle_multiplier)
-                    pygame.mixer.Sound.play(self.click_sound)
+                    if game_manager.history_level == 2:
+                        pygame.mixer.Sound.play(self.click_sound)
+                    elif game_manager.history_level == 3:
+                        pygame.mixer.Sound.play(self.pop_sound)
+                    else:
+                        pygame.mixer.Sound.play(self.noice_sound)
+                        
                     # self.number_list.append(IncrementNumber(1, pos, pygame.time.get_ticks()))
         
         # self.update_all_numbers(screen)

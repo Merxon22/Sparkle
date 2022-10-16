@@ -12,6 +12,9 @@ class StoreManager:
         self.pi_castle = pygame.image.load('Images/pi store castle.png')
         self.pi_logo = pygame.image.load('Images/piLogo.png')
         self.pi_logo = pygame.transform.scale(self.pi_logo, (25, 25))
+
+        self.cach_sound = pygame.mixer.Sound("Sound\Cash.mp3")
+
     
     def render_store(self, screen, game_manager):
         screen.blit(self.store_1, [80, 95])
@@ -49,18 +52,23 @@ class StoreManager:
             game_manager.item_price[0] = int(game_manager.item_price[0] ** 1.2)
             game_manager.sparkle_rate += 3
             game_manager.item_stack[0] = game_manager.item_stack[0] + 1
+            pygame.mixer.Sound.play(self.cach_sound)
+
         if self.is_clicked(self.store_2, [80, 140], events) and game_manager.num_sparkles >= game_manager.item_price[1]:
             print(2)
             game_manager.num_sparkles -= game_manager.item_price[1]
             game_manager.item_price[1] = int(game_manager.item_price[1] ** 1.2)
             game_manager.sparkle_multiplier *= 1.75
             game_manager.item_stack[1] = game_manager.item_stack[1] + 1
+            pygame.mixer.Sound.play(self.cach_sound)
+            
         if self.is_clicked(self.store_1, [80, 185], events) and game_manager.num_sparkles >= game_manager.item_price[2]:
             print(3)
             game_manager.num_sparkles -= game_manager.item_price[2]
             game_manager.item_price[2] = int(game_manager.item_price[2] ** 1.2)
             game_manager.history_level += 1
             game_manager.item_stack[2] = game_manager.item_stack[2] + 1
+            pygame.mixer.Sound.play(self.cach_sound)
 
 
     def is_clicked(self, obj, obj_pos, events):
