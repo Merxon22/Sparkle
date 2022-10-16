@@ -20,16 +20,18 @@ class GameManager():
         self.size = (400, 700)
         self.screen = pygame.display.set_mode(self.size)
 
-        self.current_level = 0
+        self.current_level = 1
         self.num_sparkles = 0
         self.sparkle_rate = 3
         self.last_sparkle_update_time = 0
+     
     
 
     def add_sparkle(self, num):
         self.num_sparkles += num
 
     def run_game(self):
+        
         while True:
             self.check_sparkle_update()
             for event in pygame.event.get():
