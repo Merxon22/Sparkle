@@ -7,7 +7,7 @@ class StarManager():
     def __init__(self):
         self.star1 = pygame.image.load('Images\stage1.png')
         self.star2 = pygame.image.load('Images\stage2.png')
-        self.star3 = pygame.image.load('Images\stage2.png')
+        self.star3 = pygame.image.load('Images/beautiful star.png')
 
         self.number_list = []
         self.click_sound = pygame.mixer.Sound("Sound\Squee.mp3")
@@ -17,7 +17,7 @@ class StarManager():
         earth_center = (star_pos[0] + star_rect.height/2, star_pos[1] + star_rect.width/2)
         return ((cursor_pos[0]-earth_center[0])**2 + (cursor_pos[1]-earth_center[1])**2)**0.5
 
-    def render_star(self, screen, level, game_manager):
+    def render_star(self, screen, level, game_manager, sparkle_multiplier):
         star_image = None
         if level == 2:
             star_image = self.star1
@@ -40,7 +40,7 @@ class StarManager():
             if event.type==pygame.MOUSEBUTTONDOWN:
                 pos=pygame.mouse.get_pos()
                 if self.check_cursor_distance_from_star(pos, (x_pos, y_pos), star_image.get_rect()) <= star_image.get_width() / 2:
-                    game_manager.add_sparkle(1)
+                    game_manager.add_sparkle(1 * sparkle_multiplier)
                     pygame.mixer.Sound.play(self.click_sound)
                     # self.number_list.append(IncrementNumber(1, pos, pygame.time.get_ticks()))
         

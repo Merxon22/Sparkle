@@ -22,11 +22,16 @@ class GameManager():
         self.size = (400, 700)
         self.screen = pygame.display.set_mode(self.size)
 
-        self.current_level = 5
+        self.current_level = 1
         self.num_sparkles = 0
-        self.sparkle_rate = 3
+        self.sparkle_rate = 0
+        self.history_level = 2
+        self.sparkle_multiplier = 1
         self.last_sparkle_update_time = 0
-     
+
+        #item
+        self.item_stack = [0,0,0]
+        self.item_price = [15,50,200]     
     
 
     def add_sparkle(self, num):
@@ -36,6 +41,10 @@ class GameManager():
         
         while True:
             self.check_sparkle_update()
+
+            if self.current_level != 0 and self.current_level != 1 and self.current_level != 5:
+                self.current_level = self.history_level
+
             for event in pygame.event.get():
                 if event.type==pygame.QUIT:
                     sys.quit()
@@ -48,10 +57,10 @@ class GameManager():
                 self.menu_manager.render_button(self.screen, self)
             elif self.current_level == 5:
                 self.menu_manager.render_button(self.screen, self)
-                self.store_manager.render_store(self.screen)
+                self.store_manager.render_store(self.screen, self)
             elif self.current_level > 1:
                 self.menu_manager.render_button(self.screen, self)
-                self.star_manager.render_star(self.screen, self.current_level, self)
+                self.star_manager.render_star(self.screen, self.current_level, self, self.sparkle_multiplier)
                 self.ui_manager.render_ui(self.screen, self.current_level, self.num_sparkles, self.sparkle_rate)
             pygame.display.flip()
 
