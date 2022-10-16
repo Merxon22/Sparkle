@@ -34,7 +34,7 @@ while running:
      #   speed[0] = -speed[0]
     #if diagram_rect.top < 0 or diagram_rect.bottom > 300:
      #   speed[1] = -speed[1]
-    screen.blit(diagram, ())
+    screen.blit(diagram, (300, 250))
     #screen.blit(diagram, diagram_rect)
     font=pygame.font.SysFont("arial", 50, True, False)
     surface=font.render(str(score), True, (255, 000, 000))
