@@ -30,12 +30,14 @@ class Sparkles:
         self.current_worth(self, name, coins_possessed, level, stage)
         pygame.display.flip() """
 class Display(Sparkles):
-    def __init__(self):
+    def __init__(self, name, coins_possessed, click_values, level, stage, star_color, level_threshold, current_worth):
         #display_game(self)
         Sparkles.__init__(self, name, coins_possessed, click_values, level, stage, star_color, level_threshold)
+        
     def display_game(self):
         print(1)
         pygame.init()
+        
         FPS=20
         fpsClock=pygame.time.Clock()
         screen=pygame.display.set_mode((400, 700))
