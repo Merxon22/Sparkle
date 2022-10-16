@@ -45,12 +45,12 @@ class GameManager():
 
             self.background_manager.render_background(self.screen, self.current_level)
             if self.current_level == 0:
-                self.menu_manager.render_button(self.screen)
+                self.menu_manager.render_button(self.screen, self)
             elif self.current_level == 5:
-                self.menu_manager.render_button(self.screen)
+                self.menu_manager.render_button(self.screen, self)
                 self.store_manager.render_store(self.screen)
             elif self.current_level > 1:
-                self.menu_manager.render_button(self.screen)
+                self.menu_manager.render_button(self.screen, self)
                 self.star_manager.render_star(self.screen, self.current_level, self)
                 self.ui_manager.render_ui(self.screen, self.current_level, self.num_sparkles, self.sparkle_rate)
             pygame.display.flip()

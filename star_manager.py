@@ -7,6 +7,7 @@ class StarManager():
     def __init__(self):
         self.star1 = pygame.image.load('Images\stage1.png')
         self.star2 = pygame.image.load('Images\stage2.png')
+        self.star3 = pygame.image.load('Images\stage2.png')
 
         self.number_list = []
         self.click_sound = pygame.mixer.Sound("Sound\Squee.mp3")
@@ -22,6 +23,8 @@ class StarManager():
             star_image = self.star1
         elif level == 3:
             star_image = self.star2
+        else:
+            star_image = self.star3
 
         pos=pygame.mouse.get_pos()
         x_pos = 200 - star_image.get_width() / 2
