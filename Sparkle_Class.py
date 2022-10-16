@@ -1,7 +1,7 @@
 import pygame, sys
 from pygame.locals import *
 
-from Background import background
+from Background import BackgroundManager, background
 
 class Sparkles:
     pygame.init()

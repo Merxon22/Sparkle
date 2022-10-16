@@ -1,5 +1,23 @@
 import pygame 
 pygame.init()
+
+class BackgroundManager:
+    def __init__(self):
+        self.width, self.height = 400, 700
+        self.size = (400, 700)
+
+        self.load_screen_background = pygame.image.load("Images/LoadBackground.png")
+        self.load_screen_background = pygame.transform.scale(self.load_screen_background, self.size)
+        self.game_background = pygame.image.load("Images/Background.png")
+        self.game_background = pygame.transform.scale(self.game_background, self.size)
+    
+    def render_background(self, screen, level):
+        if level == 1:
+            screen.blit(self.load_screen_background, [0,0])
+        else:
+            screen.blit(self.game_background, [0,0])
+
+
 def background(level):
     height=700
     width=400
