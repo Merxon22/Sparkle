@@ -18,6 +18,13 @@ class BackgroundManager:
         self.reward2 = pygame.image.load('Images/reward2.png')
         self.reward3 = pygame.image.load('Images/reward3.png')
 
+        #store
+        self.store_background = pygame.image.load('Images/pink background.png')
+        self.store_background = pygame.transform.scale(self.store_background, self.size)
+        self.store_board = pygame.image.load('Images\store board.png')
+        self.pi_board = pygame.image.load('Images\pi store.png')
+
+
     def render_background(self, screen, level):
         if level == 1:
             screen.blit(self.load_screen_background, [0,0])
@@ -26,6 +33,10 @@ class BackgroundManager:
             screen.blit(self.reward1, [60, 60])
             screen.blit(self.reward2, [220, 60])
             screen.blit(self.reward3, [90, 300])
+        elif level == 5:
+            screen.blit(self.store_background, [0,0])
+            screen.blit(self.store_board, [65, 40])
+            screen.blit(self.pi_board, [65, 300])
         else:
             screen.blit(self.game_background, [0,0])
 
